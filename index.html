@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Sakura River Valley</title>
+    <meta name="description" content="Perjalanan perahu 3D real-time menyusuri lembah sungai sakura di Jepang — siang-malam, hujan, badai, dan bunga sakura berguguran." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <div id="intro">
+      <div class="intro-inner">
+        <div class="intro-kanji">桜川</div>
+        <h1>Sakura River Valley</h1>
+        <p>Menyusuri lembah sungai di Jepang dengan perahu sampan — jembatan merah, pagoda lima tingkat, dan sakura yang berguguran.</p>
+        <button id="start" disabled>Memuat…</button>
+        <div class="intro-hint">Disarankan memakai headphone · audio dibangkitkan secara prosedural</div>
+      </div>
+    </div>
+
+    <div id="hud" class="hidden">
+      <header class="brand">
+        <span class="kanji">桜川</span>
+        <span class="name">Sakura River Valley</span>
+      </header>
+
+      <div class="clock">
+        <span id="clock-time">17:00</span>
+        <span id="clock-phase">夕暮れ · Senja</span>
+      </div>
+
+      <button id="panel-toggle" aria-expanded="false" aria-controls="panel">☰ Kontrol</button>
+      <div class="panel" id="panel">
+        <div class="row">
+          <label for="time">Waktu</label>
+          <input id="time" type="range" min="0" max="24" step="0.01" value="17" />
+          <button id="play" class="icon" title="Jeda/lanjut waktu" aria-label="Jeda atau lanjutkan waktu">❚❚</button>
+        </div>
+        <div class="row chips" id="weather">
+          <button data-weather="clear">晴 Cerah</button>
+          <button data-weather="sakura" class="on">桜 Sakura</button>
+          <button data-weather="rain">雨 Hujan</button>
+          <button data-weather="storm">雷 Badai</button>
+        </div>
+        <div class="row chips" id="camera">
+          <button data-cam="follow" class="on">Ikuti</button>
+          <button data-cam="cinematic">Sinematik</button>
+          <button data-cam="bow">Haluan</button>
+          <button id="sound" class="icon" title="Suara" aria-label="Nyalakan atau matikan suara">♪</button>
+        </div>
+        <div class="row speed">
+          <span>Laju</span>
+          <div class="bar"><div id="speed-bar"></div></div>
+        </div>
+      </div>
+
+      <div class="touch" id="touch">
+        <button data-key="left" aria-label="Kemudi kiri">◀</button>
+        <div class="col">
+          <button data-key="up" aria-label="Percepat">▲</button>
+          <button data-key="down" aria-label="Perlambat">▼</button>
+        </div>
+        <button data-key="right" aria-label="Kemudi kanan">▶</button>
+      </div>
+
+      <div class="hint">W/S laju · A/D kemudi · seret untuk memutar kamera · gulir untuk zoom · H sembunyikan UI</div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
