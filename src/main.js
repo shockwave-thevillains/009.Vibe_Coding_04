@@ -5,7 +5,6 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
-import './style.css';
 import { mulberry32, createNoise2D } from './noise.js';
 import { River } from './river.js';
 import { makeHeightField, createTerrain, createDistantMountains } from './terrain.js';

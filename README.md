@@ -52,19 +52,19 @@ npm run preview  # pratinjau hasil build
 
 ## Deploy ke GitHub Pages
 
-Workflow `.github/workflows/deploy.yml` membangun proyek dan menerbitkan `dist/` ke GitHub Pages
-setiap kali ada push ke `main` (atau ke branch pengembangan). Langkah sekali saja:
+Ada dua cara, dan keduanya bisa dipakai:
 
-1. Buka **Settings → Pages** di repo ini.
-2. Pada **Build and deployment → Source**, pilih **GitHub Actions**.
-3. Push ke branch, atau jalankan workflow *Deploy to GitHub Pages* secara manual dari tab
-   **Actions**.
+- **Deploy from a branch (paling mudah).** Di **Settings → Pages**, pilih branch ini dengan folder
+  `/ (root)`. `index.html` memuat three.js dari jsDelivr lewat *import map* dan CSS lewat `<link>`,
+  sehingga file sumber bisa langsung jalan tanpa proses build. File `.nojekyll` mencegah Jekyll
+  mengubah apa pun.
+- **GitHub Actions (versi ter-bundle).** Di **Settings → Pages → Source**, pilih **GitHub Actions**.
+  Workflow `.github/workflows/deploy.yml` lalu akan membangun proyek dengan Vite dan menerbitkan
+  `dist/` setiap kali ada push.
 
-Situs akan tersedia di `https://<username>.github.io/<nama-repo>/`. `vite.config.js` memakai
-`base: './'` sehingga path aset tetap benar di subfolder tersebut.
+Situs akan tersedia di `https://<username>.github.io/<nama-repo>/`.
 
 > Catatan: GitHub Pages untuk repo **private** memerlukan paket GitHub Pro, Team, atau Enterprise.
-> Di paket Free, ubah dulu repo menjadi public.
 
 ## Struktur kode
 
